@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as fasFaStar } from "@fortawesome/free-solid-svg-icons";
 import PhotoSlideshow from "./PhotoSlideshow";
-import Select from "react-select";
 import categories from "./categories.json";
 import CategoriesDropdown from "./CategoriesDropdown";
 
@@ -83,7 +82,9 @@ function App() {
 
     // Make request to Yelp API
     axios
-      .get("http://localhost:3001/search", { params: params })
+      .get("https://restaurant-server-7phcvm3nna-uc.a.run.app/search", {
+        params: params,
+      })
       .then((response) => {
         const filteredBusinesses = response.data.businesses.filter(
           (business) => business.rating >= ratingFilter
@@ -100,7 +101,7 @@ function App() {
 
           axios
             .get(
-              `http://localhost:3001/business-details/${randomRestaurant.id}`
+              `https://restaurant-server-7phcvm3nna-uc.a.run.app/business-details/${randomRestaurant.id}`
             )
             .then((response) => {
               randomRestaurant["photos"] = response.data;
@@ -248,7 +249,7 @@ function App() {
                     {randomRest.categories.map((category) => (
                       <span
                         key={category.alias}
-                        className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-3"
+                        className="inline-block text-white bg-[#ff580f] rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-3"
                       >
                         {category.title}
                       </span>
@@ -280,7 +281,7 @@ function App() {
                           ({randomRest.review_count} reviews)
                         </span>
                         {randomRest.price && (
-                          <span className="bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+                          <span className="bg-[#ff580f] text-white rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
                             {randomRest.price}
                           </span>
                         )}

@@ -23,13 +23,13 @@ const PhotoSlideshow = ({ photos }) => {
           <div className="absolute inset-0 flex items-center justify-between z-10">
             <button
               onClick={prevPhoto}
-              className="p-2 bg-gray-300 hover:bg-gray-400 rounded-full text-gray-800 shadow-lg"
+              className="p-2 bg-[#ff8a5b] hover:bg-[#ff580f] rounded-full text-gray-800 shadow-lg"
             >
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
             <button
               onClick={nextPhoto}
-              className="p-2 bg-gray-300 hover:bg-gray-400 rounded-full text-gray-800 shadow-lg"
+              className="p-2 bg-[#ff8a5b] hover:bg-[#ff580f] rounded-full text-gray-800 shadow-lg"
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
