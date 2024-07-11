@@ -32,7 +32,11 @@ const CategoriesDropdown = ({
 
   return (
     <div>
-      <Select className="w-56" onChange={handleChange} options={options} />
+      <Select
+        className="w-56 text-sm"
+        onChange={handleChange}
+        options={options}
+      />
     </div>
   );
 };
