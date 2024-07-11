@@ -40,7 +40,6 @@ function App() {
   // }, []);
 
   const [categories, setCategories] = useState([
-    { name: "Filipino", alias: "filipino" },
     { name: "Indian", alias: "indpak" }, // For Indian, Yelp uses 'indpak' to include both Indian and Pakistani cuisines
     { name: "Italian", alias: "italian" },
     { name: "Japanese", alias: "japanese" },
@@ -50,6 +49,7 @@ function App() {
     { name: "Mexican", alias: "mexican" },
     { name: "French", alias: "french" },
     { name: "Chinese", alias: "chinese" },
+    { name: "Filipino", alias: "filipino" },
   ]);
 
   const handleCheckboxChange = (event) => {
