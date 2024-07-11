@@ -146,8 +146,8 @@ function App() {
           latitude={latitude}
         />
       </div>
-      <div className="w-4/5 flex flex-row bg-[#e6a584] overflow-hidden">
-        <div className="w-1/2 h-full">
+      <div className={`w-4/5 flex flex-row bg-[#e6a584] overflow-hidden`}>
+        <div className={`${randomRest ? "w-1/2" : "w-full"} h-full`}>
           <MapComponent
             latitude={latitude}
             longitude={longitude}
@@ -155,7 +155,7 @@ function App() {
             setLongitude={setLongitude}
           />
         </div>
-        <RestaurantPane randomRest={randomRest} />
+        {randomRest && <RestaurantPane randomRest={randomRest} />}
       </div>
     </div>
   );
