@@ -19,7 +19,7 @@ RUN npm run build
 # Use an Nginx image to serve the built app
 FROM nginx:stable-alpine
 
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx/nginx.conf /etc/nginx/nginx.confl
 # Copy the build output from the build stage
 
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
