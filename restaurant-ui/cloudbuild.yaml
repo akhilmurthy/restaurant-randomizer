@@ -1,0 +1,15 @@
+steps:
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["install"]
+  - name: "gcr.io/cloud-builders/npm"
+    args: ["run", "build"]
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/restaurantpicker-416000/containers/restaurant-ui",
+        ".",
+      ]
+images:
+  - "us-central1-docker.pkg.dev/restaurantpicker-416000/containers/restaurant-ui"
