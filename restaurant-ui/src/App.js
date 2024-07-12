@@ -13,6 +13,7 @@ import categories from "./categories.json";
 import CategoriesDropdown from "./CategoriesDropdown";
 import OptionsPane from "./OptionsPane";
 import RestaurantPane from "./RestaurantPane";
+import AppMobile from "./AppMobile";
 
 function App() {
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -23,6 +24,19 @@ function App() {
   const [restaurants, setRestaurants] = useState([]);
   const [randomRest, setRandomRest] = useState("");
   const [ratingFilter, setRatingFilter] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 768);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   // useEffect(() => {
   //   const fetchCategories = async () => {
@@ -50,7 +64,6 @@ function App() {
     { name: "Korean", alias: "korean" },
     { name: "Mediterranean", alias: "mediterranean" },
     { name: "Mexican", alias: "mexican" },
-
     { name: "Chinese", alias: "chinese" },
   ]);
 
@@ -126,7 +139,27 @@ function App() {
       });
   };
 
-  return (
+  return isMobile ? (
+    <AppMobile
+      categories={categories}
+      selectedCategories={selectedCategories}
+      handleCheckboxChange={handleCheckboxChange}
+      setCategories={setCategories}
+      setSelectedCategories={setSelectedCategories}
+      selectedPrice={selectedPrice}
+      setSelectedPrice={setSelectedPrice}
+      ratingFilter={ratingFilter}
+      setRatingFilter={setRatingFilter}
+      maxDistance={maxDistance}
+      setMaxDistance={setMaxDistance}
+      handleRandomize={handleRandomize}
+      randomRest={randomRest}
+      longitude={longitude}
+      latitude={latitude}
+      setLatitude={setLatitude}
+      setLongitude={setLongitude}
+    />
+  ) : (
     <div className="flex flex-col md:flex-row h-screen w-screen">
       <div className="w-1/5">
         <OptionsPane
@@ -147,7 +180,11 @@ function App() {
         />
       </div>
       <div className={`w-4/5 flex flex-row bg-[#e6a584] overflow-hidden`}>
-        <div className={`${randomRest ? "w-1/2" : "w-full"} h-full`}>
+        <div
+          className={`${
+            randomRest ? "w-1/2" : "w-full"
+          } h-full hidden sm:block`}
+        >
           <MapComponent
             latitude={latitude}
             longitude={longitude}

@@ -5,7 +5,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const PhotoSlideshow = ({ photos }) => {
+const PhotoSlideshow = ({ photos, height, width }) => {
   const [current, setCurrent] = useState(0);
 
   const nextPhoto = () => {
@@ -24,20 +24,32 @@ const PhotoSlideshow = ({ photos }) => {
             <button
               onClick={prevPhoto}
               className="p-2 bg-[#ff8a5b] hover:bg-[#ff580f] rounded-full text-gray-800 shadow-lg"
+              style={{
+                position: "absolute",
+                left: "10px",
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
             >
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
             <button
               onClick={nextPhoto}
               className="p-2 bg-[#ff8a5b] hover:bg-[#ff580f] rounded-full text-gray-800 shadow-lg"
+              style={{
+                position: "absolute",
+                right: "10px",
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </button>
           </div>
           <div
             style={{
-              width: "500px",
-              height: "500px",
+              width: width,
+              height: height,
               overflow: "hidden",
               position: "relative",
             }}

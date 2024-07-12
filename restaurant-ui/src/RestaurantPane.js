@@ -63,7 +63,11 @@ const RestaurantPane = ({ randomRest }) => (
                     </span>
                   )}
                   <div className="mt-2">
-                    <PhotoSlideshow photos={randomRest.photos || []} />
+                    <PhotoSlideshow
+                      photos={randomRest.photos || []}
+                      height="500px"
+                      width="500px"
+                    />
                   </div>
                 </div>
               )}
